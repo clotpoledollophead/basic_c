@@ -38,5 +38,5 @@ int main() {
 		printf("The points cannot form a triangle.");
 	}
 
-	return 2;
+	return 0;
 }
