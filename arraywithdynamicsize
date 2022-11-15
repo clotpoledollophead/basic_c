@@ -1,0 +1,55 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+
+int* func(int* arr, int count, int n) {
+	arr = (int*)realloc(arr, n * sizeof(int));
+	int action;
+	printf("action = ");
+	scanf("%d", &action);
+
+	if (action == 0) {
+		exit(0);
+	}
+	else if (action == 1) {
+		
+		if (n <= count) {
+			n = n * 2;
+			arr = (int*)realloc(arr, n * sizeof(int));
+		}
+		printf("element to add = ");
+		scanf("%d", &arr[count]);
+		printf("whole array = ");
+		for (int i = 0; i < n; i++) {
+			printf("%d ", arr[i]);
+		}
+		printf("\n");
+		count++;
+		func(arr, count, n);
+	}
+	else if (action == 2) {
+		arr[count - 1] = -7777;
+		count--;
+		if (n >= count*2) {
+			n = n / 2;
+			arr = (int*)realloc(arr, n * sizeof(int));
+		}
+		printf("whole array = ");
+		for (int i = 0; i < n; i++) {
+			printf("%d ", arr[i]);
+		}
+		printf("\n");
+		func(arr, count, n);
+	}
+	return arr;
+}
+
+int main() {
+	int count = 0;
+	int n;
+	n = 1;
+	int* arr = NULL;
+	arr = (int*)malloc(n * sizeof(int));
+	func(arr, count, n);
+	return 0;
+}
