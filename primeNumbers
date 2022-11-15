@@ -1,0 +1,27 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+
+/*find and print prime numbers under 10000*/
+
+int primeNumber(int n) {
+	int flag = 1; //0 not prime, 1 prime
+	for (int j = 2; j <= n/2 ; j++) {
+		if (n % j == 0) {
+			flag = 0;
+			break;
+		}
+	}
+	if (flag == 1) {
+		printf("%d ", n);
+	}
+	return n;
+}
+
+
+int main() {
+	for (int n = 2; n <= 10000; n++) {
+		primeNumber(n);
+	}
+	return 0;
+}
