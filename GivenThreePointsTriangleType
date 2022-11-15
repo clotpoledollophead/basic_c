@@ -1,0 +1,42 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+/*given three points in a 2d space, print out what kind of triangle*/
+int main() {
+	int x1, x2, x3, y1, y2, y3;
+	int len1, len2, len3;
+	scanf("%d %d", &x1, &y1);
+	scanf("%d %d", &x2, &y2);
+	scanf("%d %d", &x3, &y3);
+
+	len1 = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+	len2 = sqrt(pow(x3 - x2, 2) + pow(y3 - y2, 2));
+	len3 = sqrt(pow(x1 - x3, 2) + pow(y1 - y3, 2));
+
+	if (((len1 + len2) > len3) && ((len1 + len3) > len2) && ((len3 + len2) > len1)) {
+		if ((pow(len1, 2) + (pow(len2, 2)) == (pow(len3, 2))) || (pow(len3, 2) + (pow(len2, 2)) == (pow(len1, 2))) || ((pow(len1, 2) + (pow(len3, 2)) == (pow(len2, 2))))) {
+			printf("The points form a right triangle.");
+		}
+		else if ((pow(len1, 2) + (pow(len2, 2)) > (pow(len3, 2))) || (pow(len3, 2) + (pow(len2, 2)) > (pow(len1, 2))) || ((pow(len1, 2) + (pow(len3, 2)) > (pow(len2, 2))))) {
+			printf("The points form an acute triangle.");
+		}
+		else {
+			printf("The points form an obtuse triangle.");
+		}
+
+		if (len1 == len2 && len2 == len3) {
+			printf("The points form an equilateral triangle.");
+		}
+
+		if ((len1 == len2) || (len2 == len3) || (len1 == len3)) {
+			printf("The points form an isoceles triangle.");
+		}
+	}
+	else {
+		printf("The points cannot form a triangle.");
+	}
+
+	return 2;
+}
