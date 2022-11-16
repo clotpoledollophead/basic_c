@@ -1,0 +1,43 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+	int row, col, arr[100][100];
+	int sum = 0, product = 0;
+	printf("Enter number of rows: ");
+	scanf("%d", &row);
+	printf("Enter number of columns: ");
+	scanf("%d", &col);
+	printf("\n");
+
+	printf("Enter matrix elements:");
+	printf("\n");
+	for (int i = 0; i < row; i++) {
+		for (int j = 0; j < col; j++) {
+			printf("	Enter element [%d,%d] : ", i + 1, j + 1);
+			scanf("%d", &arr[i][j]);
+		}
+	}
+	printf("\n");
+	printf("Matrix is : ");
+	printf("\n");
+	for (int i = 0; i < row; i++) {
+		for (int j = 0; j < col; j++) {
+			printf("%d	", arr[i][j]);
+			sum += arr[i][j];
+			if (i == 0 && j == 0) {
+				product = arr[i][j];
+			}
+			else {
+				product = product * arr[i][j];
+			}
+		}
+		printf("\n");
+	}
+
+	printf("Sum of all elements : %d\n", sum);
+	printf("Product of all elements : %d\n", product);
+
+	return 0;
+}
