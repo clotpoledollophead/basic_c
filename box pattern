@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+/*C program to print box pattern using loops*/
+
+int main() {
+	int i, j, n, t;
+	//i and j are the positions
+	//n is the number of layers
+	//t is the number of elements per side of the whole box
+	printf("Enter the number of layers: ");
+	scanf("%d", &n);
+	printf("\n");
+	
+	t = 2 * n - 1; //calculate t
+	i = t; //initialize i
+	j = t; //initialize j
+
+	int len, height, start, nControl;
+	int arr[100][100] = { 0 };
+	nControl = n;
+	start = 0;
+	for (int a = 0; a < nControl; a++) {
+		for (int i = start; i < t; i++) {
+			for (int j = start; j < t; j++) {
+				if (i == start || i == (t - 1) || j == start || j == (t - 1)) {
+					arr[i][j] = n;
+					if (n == 1) {
+						break;
+					}
+				}
+			}
+		}
+		n--;
+		t--;
+		start++;
+	}
+
+	t = 2 * start - 1;
+	for (i = 0; i < t; i++) {
+		for (j = 0; j < t; j++) {
+			printf("%d ", arr[i][j]);
+		}
+		printf("\n");
+	}
+	return 0;
+}
